@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>淘宝网 - 淘！我喜欢</title>
+  <link rel="stylesheet" href="../style/common.css">
+  <link rel="stylesheet" href="../style/index.css">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1904039_3rmo6ichyhy.css">
+</head>
+
+<body>
+  <div class="cover">
+    <div class="site-nav site-nav-status-logout" id="setNav">
+      <div class="site-nav-bd" id="siteNavBd">
+        <ul class="site-nav-bd-l" id="siteNavBdL">
+          <li class="site-nav-menu site-nav-switch">
+            <div class="site-nav-menu-hd">
+              <span class="site-nav-region">中国大陆</span>
+              <span class="site-nav-arrow">
+                <span class="iconfont icon-sort_desc"></span>
+              </span>
+            </div>
+            <div class="site-nav-menu-bd site-nav-menu-list">
+              <ul class="site-nav-region-list site-nav-menu-bd-panel" id="siteNavRegion" role="list">
+                <li class="site-nav-region-item">全球</li>
+                <li class="site-nav-region-item">中国大陆</li>
+                <li class="site-nav-region-item">中国香港</li>
+                <li class="site-nav-region-item">中国台湾</li>
+                <li class="site-nav-region-item">中国澳门</li>
+                <li class="site-nav-region-item">韩国</li>
+                <li class="site-nav-region-item">马来西亚</li>
+                <li class="site-nav-region-item">澳大利亚</li>
+                <li class="site-nav-region-item">新加坡</li>
+                <li class="site-nav-region-item">新西兰</li>
+                <li class="site-nav-region-item">加拿大</li>
+                <li class="site-nav-region-item">美国</li>
+                <li class="site-nav-region-item">日本</li>
+              </ul>
+            </div>
+          </li>
+          <li class="site-nav-menu site-nav-login" id="siteNavLogin">
+            <div class="site-nav-menu-hd">
+              <div class="site-nav-sign">
+                <a href="./login.html" class="h">亲，请登录</a>
+                <a href="./register.html">免费注册</a>
+              </div>
+              <div class="site-nav-user">
+                <a href="javascript:;" class="site-nav-login-info-nick"></a>
+                <span class="site-nav-arrow">
+                  <span class="iconfont icon-sort_desc"></span>
+                </span>
+              </div>
+            </div>
+            <div class="site-nav-menu-bd" id="siteNavLoginPanel"></div>
+          </li>
+          <li class="site-nav-menu site-nav-mobile" id="siteNavMobile">
+            <div class="site-nav-menu-hd">
+              <a href="javascript:;">
+                <span>手机逛淘宝</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+        <ul class="site-nav-bd-r" id="siteNavBdR">
+          <li class="site-nav-menu site-nav-home" id="siteNavHome">
+            <div class="site-nav-menu-bd">
+              <a href="./index.html">
+                <span>淘宝网首页</span>
+              </a>
+            </div>
+          </li>
+          <li class="site-nav-menu site-nav-mytaobao" id="siteNavMytaobao">
+            <div class="site-nav-menu-hd">
+              <a href="javascript:;">
+                <span>我的淘宝</span>
+              </a>
+              <span class="site-nav-arrow">
+                <span class="iconfont icon-sort_desc"></span>
+              </span>
+            </div>
+            <div class="site-nav-menu-bd site-nav-menu-list">
+              <div class="site-nav-menu-bd-panel">
+                <a href="javascript:;">以买到的宝贝</a>
+                <a href="javascript:;">我的足迹</a>
+              </div>
+            </div>
+          </li>
+          <li class="site-nav-menu site-nav-cart site-nav-menu-empty mini-cart">
+            <div class="site-nav-menu-hd">
+              <a href="./cart.html">
+                <span class="iconfont icon-che"></span>
+                <span>购物车</span>
+                <strong class="h" id="miniCartNum">0</strong>
+              </a>
+              <span class="site-nav-arrow">
+                <span class="iconfont icon-sort_desc"></span>
+              </span>
+            </div>
+            <div class="site-nav-menu-bd">
+              <div class="site-nav-menu-bd-panel mini-cart-ready">
+                <div class="mini-cart-ft">
+                  <p>您购物车里还没有任何宝贝</p>
+                  <a href="./cart.html" class="site-nav-btn">查看我的购物车</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="site-nav-menu site-nav-favor" id="siteNavFavor">
+            <div class="site-nav-menu-hd">
+              <a href="javascript:;">
+                <span class="iconfont icon-shoucang"></span>
+                <span>收藏夹</span>
+              </a>
+              <span class="site-nav-arrow">
+                <span class="iconfont icon-sort_desc"></span>
+              </span>
+            </div>
+            <div class="site-nav-menu-bd site-nav-menu-list">
+              <div class="site-nav-menu-bd-panel">
+                <a href="javascript:;">收藏的宝贝</a>
+                <a href="javascript:;">收藏的店铺</a>
+              </div>
+            </div>
+          </li>
+          <li class="site-nav-menu">
+            <div class="site-nav-menu-hd">
+              <a href="javascript:;"><span>商品分类</span></a>
+            </div>
+          </li>
+          <li class="site-nav-pipe">|</li>
+          <li class="site-nav-menu site-nav-seller" id="siteNavSeller">
+            <div class="site-nav-menu-hd">
+              <a href="javascript:;">
+                <span>千牛卖家中心</span>
+              </a>
+              <span class="site-nav-arrow">
+                <span class="iconfont icon-sort_desc"></span>
+              </span>
+            </div>
+            <div class="site-nav-menu-bd site-nav-menu-list">
+              <div class="site-nav-menu-bd-panel menu-bd-panel">
+                <a href="javascript:;">免费开店</a>
+                <a href="javascript:;">已卖出的宝贝</a>
+                <a href="javascript:;">出售中的宝贝</a>
+                <a href="javascript:;">卖家服务市场</a>
+                <a href="javascript:;">卖家培训中心</a>
+                <a href="javascript:;">体检中心</a>
+                <a href="javascript:;">问商友</a>
+              </div>
+            </div>
+          </li>
+          <li class="site-nav-menu site-nav-service" id="siteNavService">
+            <div class="site-nav-menu-hd">
+              <a href="javascript:;">
+                <span>联系客服</span>
+              </a>
+              <span class="site-nav-arrow">
+                <span class="iconfont icon-sort_desc"></span>
+              </span>
+            </div>
+            <div class="site-nav-menu-bd site-nav-menu-list"></div>
+          </li>
+          <li class="site-nav-menu site-nav-sitemap" id="siteNavSitemap">
+            <div class="site-nav-menu-hd">
+              <a href="javascript:;">
+                <span class="iconfont icon-toggle"></span>
+                <span>网址导航</span>
+              </a>
+              <span class="site-nav-arrow">
+                <span class="iconfont icon-sort_desc"></span>
+              </span>
+            </div>
+            <div class="site-nav-menu-bd">
+              <div class="site-nav-menu-panel" style="width: 1188px;" id="siteMapBd">
+                <div class="site-nav-sitemap-mod">
+                  <div class="site-nav-sitemap-mod-wrap"></div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

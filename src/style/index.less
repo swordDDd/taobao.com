@@ -1,0 +1,248 @@
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  color: #3c3c3c;
+  background-color: #f4f4f4;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+.h {
+  color: #ff5000 !important;
+}
+
+// 站点导航栏
+.site-nav {
+  z-index: 10000;
+  width: 100%;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #eee;
+
+  // 导航body部分
+  .site-nav-bd {
+    margin: 0 auto;
+    width: 1190px;
+    height: 35px;
+    background-color: #f5f5f5;
+
+    // 导航头左
+    .site-nav-bd-l {
+      float: left;
+      visibility: hidden;
+    }
+
+    // 导航头右
+    .site-nav-bd-r {
+      float: right;
+
+      .site-nav-pipe {
+        float: left;
+        height: 35px;
+        line-height: 35px;
+      }
+    }
+
+
+    .site-nav-btn {
+      display: inline-block;
+      vertical-align: middle;
+      padding: 0 10px;
+      height: 25px;
+      line-height: 25px;
+      color: #fff;
+      background: #f40;
+      border-radius: 2px;
+    }
+
+    .site-nav-pipe {
+      padding: 0 5px;
+      font-style: normal;
+      color: #dddddd;
+    }
+  }
+
+  // 导航菜单栏
+  .site-nav-menu {
+    float: left;
+
+    // 导航菜单的头部
+    .site-nav-menu-hd {
+      z-index: 10002;
+      position: relative;
+      padding: 0 6px;
+      height: 35px;
+      line-height: 35px;
+
+      a {
+        float: left;
+        margin-right: 7px;
+        font-size: 12px;
+        color: #6C6C6C;
+
+        span {
+          float: left;
+          cursor: pointer;
+        }
+      }
+
+      a:hover {
+        color: #f40;
+      }
+
+      .h {
+        color: #f22e00 !important;
+      }
+
+      .iconfont {
+        margin-right: 5px;
+      }
+
+      .icon-toggle {
+        color: #f40;
+      }
+    }
+
+    // 导航菜单的body部分
+    .site-nav-menu-bd {
+      z-index: 10001;
+      position: relative;
+      display: none;
+      margin-top: -1px;
+
+      // bd中的嵌套部分
+      .site-nav-menu-bd-panel {
+        position: absolute;
+        left: 0;
+        top: 0;
+        line-height: normal;
+        border: 1px solid #eee;
+        background: #fff;
+      }
+    }
+
+    // 菜单的下拉列表
+    .site-nav-menu-list {
+      .site-nav-menu-bd-panel {
+        padding: 8px 0;
+
+        a {
+          display: block;
+          padding: 0 5px;
+          line-height: 28px;
+          white-space: nowrap;
+          color: #6c6c6c;
+        }
+      }
+    }
+
+    // switch部分
+    .site-nav-switch {
+      .site-nav-region {
+        float: left;
+        margin-right: 7px;
+      }
+    }
+
+    // 箭头部分
+    .site-nav-arrow {
+      display: block;
+      float: right;
+      width: 12px;
+      height: 6px;
+      line-height: 6px;
+      overflow: hidden;
+      margin-top: 16px;
+
+      .iconfont {
+        display: block;
+        margin-top: -2px;
+        margin-right: 20px;
+      }
+
+      .icon-sort_desc {
+        margin-left: 3px;
+      }
+    }
+
+    .iconfont {
+      font-size: 12px;
+      font-style: normal;
+      color: #9c9c9c;
+    }
+  }
+
+  // 开头地区的列表
+  .site-nav-region-list {
+    padding-top: 8px;
+    max-height: 270px;
+    overflow-y: scroll;
+
+    // 地区元素
+    .site-nav-region-item {
+      width: 242px;
+      height: 29px;
+      line-height: 29px;
+      padding-left: 8px;
+      cursor: pointer;
+    }
+  }
+
+  .icon-che {
+    color: #f40 !important;
+    margin-right: 5px;
+  }
+
+  // mini购物车
+  .mini-cart {
+    .site-nav-menu-bd {
+      .mini-cart-ready {
+        background: #fff;
+      }
+
+      .site-nav-menu-bd-panel {
+        width: 296px;
+        line-height: 20px;
+        min-height: 40px;
+      }
+    }
+
+    .mini-cart-ft {
+      text-align: right;
+    }
+  }
+
+  .site-nav-sitemap {
+    .site-nav-menu-bd {
+      .site-nav-menu-panel {
+        overflow: hidden;
+        position: absolute;
+        right: 0;
+        left: auto;
+        min-height: 258px;
+        line-height: normal;
+        border: 1px solid #eee;
+        background: #fff;
+      }
+    }
+  }
+}
+
+.site-nav-status-login .site-nav-bd .site-nav-bd-l,
+.site-nav-status-logout .site-nav-bd .site-nav-bd-l {
+  visibility: visible;
+}
+
+.site-nav-status-logout .site-nav-login .site-nav-menu-bd,
+.site-nav-status-logout .site-nav-login .site-nav-user {
+  display: none;
+}
+
+#siteNavHome {
+  display: none;
+}
