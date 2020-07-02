@@ -568,7 +568,7 @@ div.apps {
   text-align: center;
   display: none;
   position: absolute;
-  z-index: -1;
+  z-index: 2;
 }
 .apps-nav .app-qr img {
   width: 66px;

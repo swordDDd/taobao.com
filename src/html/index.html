@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="../style/index-screen-outer.css">
   <link rel="stylesheet" href="../style/index-layer.css">
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1904039_b0hg520d0x.css">
+  <script src="../js/require.js" data-main="../js/index-main"></script>
 </head>
 
 <body>
@@ -58,7 +59,26 @@
                 </span>
               </div>
             </div>
-            <div class="site-nav-menu-bd" id="siteNavLoginPanel"></div>
+            <div class="site-nav-menu-bd" id="siteNavLoginPanel">
+              <div class="site-nav-menu-bd-panel">
+                <div class="site-nav-user-wrapper ">
+                  <a href="javascript:;" class="site-nav-user-avatar">
+                    <img src="../img/head.jpg" alt="">
+
+                  </a>
+                </div>
+                <div class="site-nav-user-info">
+                  <p class="site-nav-user-operate">
+                    <a href="javascript:;">账号管理</a>
+                    <span class="site-nav-pipe">|</span>
+                    <a href="javascript:;" id="U_Exit">退出</a>
+                  </p>
+                  <p class="level-info tao-score">淘气值：541</p>
+                  <p class="level-info">普通会员</p>
+                </div>
+                <a href="javascript:;" class="site-nav-user-privilege">查看你的专属权益</a>
+              </div>
+            </div>
           </li>
           <li class="site-nav-menu site-nav-mobile" id="siteNavMobile">
             <div class="site-nav-menu-hd">
@@ -161,9 +181,6 @@
               <a href="javascript:;">
                 <span>联系客服</span>
               </a>
-              <span class="site-nav-arrow">
-                <span class="iconfont icon-sort_desc"></span>
-              </span>
             </div>
             <div class="site-nav-menu-bd site-nav-menu-list"></div>
           </li>
@@ -1040,7 +1057,22 @@
               <a href="./register.html" class="tb-bg weight">注册</a>
               <a href="javascript:;" class="tb-bg weight">开店</a>
             </div>
-            <div class="member-login"></div>
+            <div class="member-login">
+              <div class="member-column-4">
+                <a href="javascript:;">
+                  <strong>0</strong>待收货
+                </a>
+                <a href="javascript:;">
+                  <strong>0</strong>待收货
+                </a>
+                <a href="javascript:;">
+                  <strong>0</strong>待付款
+                </a>
+                <a href="javascript:;">
+                  <strong>0</strong>待评价
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
