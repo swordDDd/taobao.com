@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="../style/index-layer.css">
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1904039_b0hg520d0x.css">
   <script src="../js/require.js" data-main="../js/index-main"></script>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/jquery.slider.js"></script>
 </head>
 
 <body>
@@ -990,6 +992,26 @@
             <div class="promo J_Promo tb-loading">
               <div class="promo-bd" style="width: 520px; overflow: hidden; height: 280px;">
                 <!-- 第一个轮播图 -->
+                <div class="slider">
+                  <div>
+                    <img src="../img/bannerT-1.jpg" alt="">
+                    <img src="../img/bannerT-2.jpg" alt="">
+                    <img src="../img/bannerT-3.jpg" alt="">
+                    <img src="../img/bannerT-4.jpg" alt="">
+                    <img src="../img/bannerT-5.jpg" alt="">
+                    <img src="../img/bannerT-1.jpg" alt="">
+                  </div>
+                  <span>&lt;</span>
+                  <span>&gt;</span>
+                  <ul>
+                    <li class="select"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                </div>
                 <div>
                   <div class="mod"></div>
                 </div>
@@ -1380,6 +1402,14 @@
     </div>
   </div>
 
+
+  <script>
+    $(function () {
+      $('.slider').slider({
+        delay: 2000
+      });
+    });
+  </script>
 </body>
 
 </html>

@@ -1,3 +1,5 @@
+let baseUrl = 'http://localhost/apache/taobao.com'
+
 define(['jquery', 'cookie'], function ($, cookie) {
   return {
     isLogin: function () {
@@ -69,13 +71,23 @@ define(['jquery', 'cookie'], function ($, cookie) {
 
       // 右侧app和二维码
       $('li.nav a').hover(function () {
-        console.log(1)
         $(this).siblings().css('display', 'block')
       }, function () {
         $(this).siblings().css('display', 'none')
       })
+    },
+    render: function () {
+      $.ajax({
+        type: "get",
+        url: `${baseUrl}/interface/get-product.php`,
+        dataType: "json",
+        success: function (res) {
+          res.forEach(elm => {
+            console.log(JSON.parse(elm.pro_classify))
+          })
+        }
+      });
     }
-
   }
 
 

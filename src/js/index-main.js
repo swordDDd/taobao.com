@@ -9,4 +9,5 @@ require.config({
 require(['index'], function (i) {
   i.isLogin()
   i.loadingHover()
+  i.render()
 })

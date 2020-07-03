@@ -706,3 +706,53 @@ fieldset,
 img {
   border: 0;
 }
+
+.slider {
+  overflow: hidden;
+  width: 520px;
+  height: 280px;
+  position: relative;
+}
+
+.slider>div {
+  width: 4000px;
+  position: absolute;
+}
+
+.slider>div>img {
+  float: left;
+}
+
+.slider>span {
+  position: absolute;
+  top: 45%;
+  font-size: 3em;
+  user-select: none;
+  cursor: pointer;
+}
+
+.slider>span:last-of-type {
+  right: 0;
+}
+
+.slider>ul {
+  list-style: none;
+  position: absolute;
+  top: 254px;
+  left: 40%;
+  background-color: rgba(0, 255, 0, 0.3);
+  border-radius: 5px;
+}
+
+.slider>ul>li {
+  float: left;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.select {
+  background: red !important;
+}
