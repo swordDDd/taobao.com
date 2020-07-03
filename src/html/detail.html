@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../style/index.css">
   <link rel="stylesheet" href="../style/detail.css">
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1904039_b0hg520d0x.css">
+  <script src="../js/require.js" data-main="../js/detail-main"></script>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
       <ul class="site-nav-bd-l" id="siteNavBdL">
         <li class="site-nav-menu site-nav-switch">
           <div class="site-nav-menu-hd">
-            <span class="site-nav-region">全球</span>
+            <span class="site-nav-region">中国大陆</span>
             <span class="site-nav-arrow">
               <span class="iconfont icon-sort_desc"></span>
             </span>
@@ -55,7 +56,26 @@
               </span>
             </div>
           </div>
-          <div class="site-nav-menu-bd" id="siteNavLoginPanel"></div>
+          <div class="site-nav-menu-bd" id="siteNavLoginPanel">
+            <div class="site-nav-menu-bd-panel">
+              <div class="site-nav-user-wrapper ">
+                <a href="javascript:;" class="site-nav-user-avatar">
+                  <img src="../img/head.jpg" alt="">
+
+                </a>
+              </div>
+              <div class="site-nav-user-info">
+                <p class="site-nav-user-operate">
+                  <a href="javascript:;">账号管理</a>
+                  <span class="site-nav-pipe">|</span>
+                  <a href="javascript:;" id="U_Exit">退出</a>
+                </p>
+                <p class="level-info tao-score">淘气值：541</p>
+                <p class="level-info">普通会员</p>
+              </div>
+              <a href="javascript:;" class="site-nav-user-privilege">查看你的专属权益</a>
+            </div>
+          </div>
         </li>
         <li class="site-nav-menu site-nav-mobile" id="siteNavMobile">
           <div class="site-nav-menu-hd">
@@ -126,18 +146,251 @@
             </div>
           </div>
         </li>
-        <li class="site-nav-menu site-nav-service" id="siteNavService">
+        <li class="site-nav-menu">
+          <div class="site-nav-menu-hd">
+            <a href="javascript:;"><span>商品分类</span></a>
+          </div>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="site-nav-menu site-nav-seller" id="siteNavSeller">
           <div class="site-nav-menu-hd">
             <a href="javascript:;">
-              <span>跨境物流管理</span>
+              <span>千牛卖家中心</span>
             </a>
+            <span class="site-nav-arrow">
+              <span class="iconfont icon-sort_desc"></span>
+            </span>
+          </div>
+          <div class="site-nav-menu-bd site-nav-menu-list">
+            <div class="site-nav-menu-bd-panel menu-bd-panel">
+              <a href="javascript:;">免费开店</a>
+              <a href="javascript:;">已卖出的宝贝</a>
+              <a href="javascript:;">出售中的宝贝</a>
+              <a href="javascript:;">卖家服务市场</a>
+              <a href="javascript:;">卖家培训中心</a>
+              <a href="javascript:;">体检中心</a>
+              <a href="javascript:;">问商友</a>
+            </div>
           </div>
         </li>
         <li class="site-nav-menu site-nav-service" id="siteNavService">
           <div class="site-nav-menu-hd">
             <a href="javascript:;">
-              <span>海外消费者帮助</span>
+              <span>联系客服</span>
             </a>
+          </div>
+          <div class="site-nav-menu-bd site-nav-menu-list"></div>
+        </li>
+        <li class="site-nav-menu site-nav-sitemap" id="siteNavSitemap">
+          <div class="site-nav-menu-hd">
+            <a href="javascript:;">
+              <span class="iconfont icon-toggle"></span>
+              <span>网址导航</span>
+            </a>
+            <span class="site-nav-arrow">
+              <span class="iconfont icon-sort_desc"></span>
+            </span>
+          </div>
+          <div class="site-nav-menu-bd">
+            <div class="site-nav-menu-panel" style="width: 1188px;" id="siteMapBd">
+              <div class="site-nav-sitemap-mod">
+                <div class="site-nav-sitemap-mod-wrap">
+                  <div class="site-nav-sitemap-mod-hd">
+                    <h4 style="color: #fc4200;">主题市场</h4>
+                  </div>
+                  <div class="site-nav-sitemap-mod-bd">
+                    <ul>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">女装
+                          <i class="hot"></i>
+                        </a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">男装</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">内衣</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">鞋靴</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">箱包</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">婴童</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">家电</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">数码</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">手机</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">美妆</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">珠宝</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">眼镜</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">手表</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">运动</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">户外</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">乐器</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">游戏</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">动漫</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">影视</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">美食</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">鲜花</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">宠物</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">农资</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">房产</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">装修</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">建材</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">家居</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">百货</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">汽车</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">二手车</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">办公</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">定制</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">教育</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">卡卷</a>
+                      </li>
+                      <li style="width: 24%;">
+                        <a href="javascript:;">本地</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="site-nav-sitemap-mod">
+                <div class="site-nav-sitemap-mod-wrap">
+                  <div class="site-nav-sitemap-mod-hd">
+                    <h4 style="color: #9fb838;">特色市场</h4>
+                  </div>
+                  <div class="site-nav-sitemap-mod-bd">
+                    <ul>
+                      <li style="width: 33%;"><a href="javascript:;">全球购</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">极有家</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">阿里拍卖</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">淘宝众筹</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">飞猪</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">农资</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">天天特卖</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">Outlets</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">淘抢购</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">试用</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">量贩团</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">阿里翻译</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="site-nav-sitemap-mod">
+                <div class="site-nav-sitemap-mod-wrap">
+                  <div class="site-nav-sitemap-mod-hd">
+                    <h4 style="color:#d75696">阿里APP</h4>
+                  </div>
+                  <div class="site-nav-sitemap-mod-bd">
+                    <ul>
+                      <li style="width: 33%;"><a href="javascript:;">淘宝</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">天猫</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">支付宝</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">聚划算</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">飞猪</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">蚂蚁聚宝</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">咸鱼</a></li>
+                      <li style="width: 33%;">
+                        <a href="javascript:;">淘小铺
+                          <i class="hot"></i>
+                        </a>
+                      </li>
+                      <li style="width: 33%;"><a href="javascript:;">阿里钱盾</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">钉钉</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">高德地图</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">虾米音乐</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">淘票票</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">菜鸟裹裹</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">阿里云</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">网商银行</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">阿里邮箱</a></li>
+                      <li style="width: 33%;"><a href="javascript:;">阿里众包</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="site-nav-sitemap-mod">
+                <div class="site-nav-sitemap-mod-wrap">
+                  <div class="site-nav-sitemap-mod-hd">
+                    <h4 style="color:#2e9fdb">精彩推荐集</h4>
+                  </div>
+                  <div class="site-nav-sitemap-mod-bd">
+                    <ul>
+                      <li style="width: 49%;"><a href="javascript:;">余额宝</a></li>
+                      <li style="width: 49%;"><a href="javascript:;">大牌捡宝</a></li>
+                      <li style="width: 49%;"><a href="javascript:;">淘公仔</a></li>
+                      <li style="width: 49%;"><a href="javascript:;">浏览器</a></li>
+                      <li style="width: 49%;"><a href="javascript:;">淘宝香港</a></li>
+                      <li style="width: 49%;"><a href="javascript:;">淘宝台湾</a></li>
+                      <li style="width: 49%;"><a href="javascript:;">淘宝全球</a></li>
+                      <li style="width: 49%;"><a href="javascript:;">淘宝东南亚</a></li>
+                      <li style="width: 49%;"><a href="javascript:;">闺蜜淘货</a></li>
+                      <li style="width: 49%;"><a href="javascript:;">大众点评</a></li>
+                      <li style="width: 49%;"><a href="javascript:;">淘工作</a></li>
+                      <li style="width: 49%;"><a href="javascript:;">阿里巴巴认证</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </li>
       </ul>
@@ -202,50 +455,9 @@
               <div class="tb-item-info tb-clear">
                 <div class="tb-item-info-l">
                   <div class="tb-gallery">
-                    <div class="tb-booth tb-pic tb-main-pic tb-pic-mode">
-                      <a href="javascript:;">
-                        <span>
-                          <img src="../img/tb-loading.gif" alt="">
-                        </span>
-                      </a>
-                    </div>
-                    <ul class="tb-thumb tb-clearfix">
-                      <li class="tb-selected">
-                        <div class="tb-pic tb-s50">
-                          <a href="javascript:;">
-                            <img src="../img/tb-loading.gif" alt="">
-                          </a>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="tb-pic tb-s50">
-                          <a href="javascript:;">
-                            <img src="../img/tb-loading.gif" alt="">
-                          </a>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="tb-pic tb-s50">
-                          <a href="javascript:;">
-                            <img src="../img/tb-loading.gif" alt="">
-                          </a>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="tb-pic tb-s50">
-                          <a href="javascript:;">
-                            <img src="../img/tb-loading.gif" alt="">
-                          </a>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="tb-pic tb-s50">
-                          <a href="javascript:;">
-                            <img src="../img/tb-loading.gif" alt="">
-                          </a>
-                        </div>
-                      </li>
-                    </ul>
+                  </div>
+                  <div class="tb-loupe hide">
+                    <img src="../img/p1_detail-1.jpg" class="bigImg">
                   </div>
                   <div class="tb-social tb-clearfix">
                     <ul>
@@ -260,114 +472,7 @@
                 <div class="tb-item-info-r">
                   <div class="tb-property tb-property-x">
                     <div class="tb-wrap tb-wrap-newshop">
-                      <div class="tb-title">
-                        <h3 class="tb-main-title">
-                          夏季空调房办公室披风加厚大披肩长保暖百搭秋冬季披肩围巾女两用
-                        </h3>
-                      </div>
-                      <ul class="tb-meta tb-promo-meta">
-                        <li class="tb-detail-price tb-clear J_PriceItem">
-                          <span class="tb-property-type">价格</span>
-                          <div class="tb-property-cont">
-                            <strong style="font-size: 14px;
-                            color: rgb(60, 60, 60);
-                            font-weight: 400;
-                            text-decoration: line-through;">
-                              <em class="tb-rmb">￥</em>
-                              <em class="tb-rmb-num">158.00</em>
-                            </strong>
-                          </div>
-                        </li>
-                        <li class="tb-detail-price tb-promo-price tb-clear">
-                          <span class="tb-property-type">淘宝价</span>
-                          <div class="tb-property-cont">
-                            <div class="tb-promo-mod">
-                              <div class="tb-promo-hd tb-promo-item">
-                                <div class="tb-promo-item-bd">
-                                  <strong class="tb-promo-price">
-                                    <em class="tb-rmb">￥</em>
-                                    <em class="tb-rmb-num">59.00</em>
-                                  </strong>
-                                  <span class="tb-promo-type">心动价</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="tb-detail-price tb-currency-price">
-                          <strong class="tb-property-cont">约 USD 8.37</strong>
-                        </li>
-                        <li class="tb-counter">
-                          <div class="tb-counter-bd">
-                            <div class="tb-rate-counter">
-                              <a href="javascript:;">
-                                <strong>815</strong>
-                                <span>累计评论</span>
-                              </a>
-                            </div>
-                            <div class="tb-sell-counter">
-                              <a href="javascript:;">
-                                <strong>484</strong>
-                                <span>交易成功</span>
-                              </a>
-                            </div>
-                          </div>
 
-                        </li>
-                      </ul>
-                      <div id="J_logistic">
-                        <div class="tb-logistic tb-clearfix">
-                          <span class="tb-name tb-property-type">配送</span>
-                          <div class="tb-logistic-info">
-                            <div class="wl-areainfo clearfix">
-                              <span class="wl-areacon">
-                                <span>浙江金华</span> 至
-                                <span>浙江杭州</span>
-                              </span>
-                            </div>
-                            <div class="wl-serviceinfo">
-                              <span class="wl-servicetitle"> 快递免运费</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="tb-key tb-key-sku">
-                        <div class="tb-skin">
-                          <dl class="J_Prop tb-prop tb-clear  J_Prop_Color ">
-                            <dt class="tb-property-type">颜色</dt>
-                            <dd>
-                              <ul class="tb-img tb-clearfix"">
-                                <li>
-                                  <a href=" javascript:;"
-                                style="background: url('../img/details-small.jpg')center no-repeat;">
-                                </a>
-                                </li>
-                              </ul>
-                            </dd>
-                          </dl>
-                          <dl class="tb-amount tb-clear">
-                            <dt class="tb-property-type">数量</dt>
-                            <dd>
-                              <span class="tb-stock">
-                                <a href="javascript:;" class="tb-reduce J_Reduce tb-disable-reduce">-</a>
-                                <input type="text" value="1" maxlength="8" min="1">
-                                <a href="javascript:;" class="tb-increase J_Increase">+</a>件
-                              </span>
-                              <em> (库存
-                                <span class="tb-count">8143</span>
-                                件)</em>
-                            </dd>
-                          </dl>
-                          <div class="tb-action tb-clearfix ">
-                            <div class="tb-btn-buy">
-                              <a href="javascript:;">立即购买</a>
-                            </div>
-                            <div class="tb-btn-add">
-                              <a href="javascript:;">加入购物车</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>

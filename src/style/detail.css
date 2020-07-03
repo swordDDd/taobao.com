@@ -236,6 +236,7 @@ img {
   float: left;
   padding: 0 20px 20px 0;
   width: 498px;
+  margin-left: 20px;
 }
 #detail .tb-summary .tb-item-info .tb-item-info-r .tb-property {
   z-index: 1;
@@ -361,6 +362,8 @@ img {
 }
 .tb-pic a img {
   vertical-align: middle;
+  width: 400px;
+  height: 400px;
 }
 .tb-s50,
 .tb-s50 a {
@@ -522,7 +525,7 @@ img {
 }
 #detail .tb-key .tb-prop .tb-img li a {
   display: block;
-  min-width: 34px;
+  width: 34px;
   height: 34px;
   padding: 1px;
   line-height: 32px;
@@ -676,4 +679,40 @@ img {
 }
 #detail .tb-sidebar h1 {
   text-align: center;
+}
+#detail .tb-key .tb-prop .tb-img li span {
+  display: none;
+}
+#detail .tb-key .tb-prop li a:hover {
+  padding: 2px 5px;
+  border: 2px solid #F40;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.ks-imagezoom-lens {
+  width: 200px;
+  height: 200px;
+  background: url(../img/detail-move.png) repeat scroll 0 0 transparent;
+  cursor: move;
+  z-index: 1;
+  font-size: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.tb-loupe {
+  width: 400px;
+  height: 400px;
+  float: left;
+  overflow: hidden;
+  border: 1px solid #E8E8E8;
+  position: absolute;
+  top: 20px;
+  left: 430px;
+  z-index: 2;
 }

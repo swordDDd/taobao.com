@@ -82,8 +82,45 @@ define(['jquery', 'cookie'], function ($, cookie) {
         url: `${baseUrl}/interface/get-product.php`,
         dataType: "json",
         success: function (res) {
+
+          let temp = ''
           res.forEach(elm => {
-            console.log(JSON.parse(elm.pro_classify))
+
+            let imgSrc = JSON.parse(elm.pro_img)[0].src
+            console.log(imgSrc)
+            temp += `<div class="item">
+            <a href="${baseUrl}/src/html/detail.html?id=${elm.pro_id}" class="hotsale-item">
+              <div class="img-wrapper">
+                <img src="${baseUrl}/src/img/${imgSrc}" alt="">
+              </div>
+              <h4>${elm.pro_title}</h4>
+            </a>
+            <p class="info">
+              <span class="price">
+                <em>￥</em>
+                ${elm.pro_tPrice}
+              </span>
+              <span class="sales">销量:${elm.pro_sales}</span>
+            </p>
+            <a href="javascript:;" class="item-more">
+              <p class="similar">
+                <i class="iconfont icon-xinaixin"></i>
+                找相似
+              </p>
+              <p>
+                发现更多相似的宝贝 &gt;
+              </p>
+            </a>
+          </div>`
+          })
+          $('.list').append(temp)
+          $('.list').append(temp)
+        },
+        complete: function () {
+          $('.list .item').hover(function () {
+            $(this).children().eq(2).css('display', 'block')
+          }, function () {
+            $(this).children().eq(2).css('display', 'none')
           })
         }
       });
