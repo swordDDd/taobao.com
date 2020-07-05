@@ -27,7 +27,7 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
                 let arr = shop.filter(val => val.id == elm.pro_id)
 
                 tempCart += `
-                  <ul class="item-content clearfix">
+                  <ul class="item-content clearfix" data-index="${arr[0].id}">
                     <li class="td td-chk">
                       <div class="td-inner">
                         <div style="height: 82px;">
@@ -90,7 +90,7 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
                     <li class="td td-op">
                       <div class="td-inner">
                         <a href="javascript:;" class="btn-fav">移入收藏夹</a>
-                        <a href="javascript:;" class="btn-fav">删除</a>
+                        <a href="javascript:;" class="J_Del">删除</a>
                       </div>
                     </li>
                   </ul>
@@ -99,16 +99,75 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
               $('.item-body').append(tempCart)
             },
             complete: function () {
+              // 全选以及对于的操作
               $('input[name=select-all]').on('click', function () {
                 $('.J_CheckBoxItem,input[name=select-all]').prop('checked', $(this).prop('checked'))
+
+                if ($(this).prop('checked')) {
+                  sum = 0
+                  $('#J_SelectedItemsCount').html($('.J_CheckBoxItem:checked').length)
+                  $('.submit-btn').removeClass('submit-btn-disabled')
+
+                  $('.number').each(function () {
+                    sum += Number($(this).html().slice(1))
+                  })
+                  $('#J_Total')[0].innerText = ` ￥ ${sum.toFixed(2)}`
+                } else {
+                  $('#J_SelectedItemsCount').html(0)
+                  $('.submit-btn').addClass('submit-btn-disabled')
+
+                  sum = 0
+                  $('#J_Total')[0].innerText = ` ￥ 0`
+                }
               })
 
-              // console.log($('.text-amount').val())
+              // 输入框大于1时减号active
               $('.text-amount').each(function () {
                 if ($(this).val() > 1) {
                   $(this).siblings().eq(0).removeClass('no-minus').addClass('minus')
                 } else {
                   $(this).siblings().eq(0).removeClass('minus').addClass('no-minus')
+                }
+              })
+
+              // 删除所有
+              $('.J_DeleteSelected').on('click', function () {
+                if ($('.J_CheckBoxItem:checked').length) {
+                  let shop = JSON.parse(cookie.get('shop'))
+                  let selectedArr = []
+                  let temp = []
+                  let t = {}
+
+
+                  $('.J_CheckBoxItem:checked').each(function () {
+                    selectedArr.push($(this).parents().filter('.item-content').attr('data-index'))
+                  })
+
+                  shop.forEach((elm, index) => {
+                    for (let v of selectedArr) {
+                      if (elm.id == v) {
+                        temp.push(index)
+
+                      }
+                    }
+                  })
+
+                  t.length = shop.length
+
+                  for (let i in temp) {
+                    if (t.length == shop.length) {
+                      shop.splice(i, 1)
+                    } else {
+                      i--
+                      shop.splice(i, 1)
+                    }
+                  }
+
+
+
+                  cookie.set('shop', JSON.stringify(shop), 1)
+
+                  location.reload()
                 }
               })
             }
@@ -199,6 +258,27 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
           } else if ($(this).val() == 1) {
             $(this).prev().removeClass('minus').addClass('no-minus')
           }
+        })
+      },
+      delete: function () {
+
+        $('.item-body').on('click', '.J_Del', function () {
+          let shop = JSON.parse(cookie.get('shop'))
+          // console.log(shop)
+          let temp = {}
+
+          shop.forEach((elm, index) => {
+            if (elm.id == $(this).parents().filter('.item-content').attr('data-index')) {
+              temp.i = index
+            }
+          })
+
+          shop.splice(temp.i, 1)
+
+          cookie.set('shop', JSON.stringify(shop), 1)
+          location.reload()
+
+
         })
       }
 

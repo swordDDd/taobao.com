@@ -12,4 +12,5 @@ require(['cart'], function (cart) {
   cart.renderC()
   cart.cartOp()
   cart.rAndA()
+  cart.delete()
 })
