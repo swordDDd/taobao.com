@@ -2,7 +2,7 @@ require.config({
   paths: {
     jquery: './jquery.min',
     index: './lib/index',
-    cookie: './cookie'
+    cookie: './cookie',
   }
 })
 

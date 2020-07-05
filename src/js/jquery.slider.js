@@ -1,4 +1,3 @@
-;
 (function ($) {
   $.fn.extend({
     slider: function (options) {
