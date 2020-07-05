@@ -1,10 +1,12 @@
-define(['jquery', 'index'], function ($, index) {
+define(['jquery', 'index', 'cookie'], function ($, index, cookie) {
+  // 这里的flag是用来判断右侧选项卡是否进行了点击
+  let flag
   return {
     load: function () {
       index.isLogin()
       index.loadingHover()
     },
-    renderD: function () {
+    renderD: function (callback) {
       let id = location.search.split('=')[1]
 
       $.ajax({
@@ -23,12 +25,9 @@ define(['jquery', 'index'], function ($, index) {
                       <a href="javascript:;">
                         <span>
                           <img src="${baseUrl}/src/img/${pImg[1].src}" alt="">
-                          <span class="ks-imagezoom-lens"></span>
+                          <span class="ks-imagezoom-lens hide"></span>
                         </span>
                       </a>
-                      <div class="tb-loupe hide">
-                        <img src="${baseUrl}/src/img/${pImg[1].src}" class="bigImg">
-                      </div>
                     </div>
                     <ul class="tb-thumb tb-clearfix">
                       <li class="tb-selected">
@@ -149,31 +148,36 @@ define(['jquery', 'index'], function ($, index) {
                               <ul class="tb-img tb-clearfix"">
                                 <li>
                                   <a href=" javascript:;"
-                                style="background: url('${baseUrl}/src/img/${pClassify[0].src}')center no-repeat;">
+                                style="background: url('${baseUrl}/src/img/${pClassify[0].src}')center no-repeat;"
+                                data-img="${baseUrl}/src/img/${pClassify[0].src}">
                                 <span>${pClassify[0].des}</span>
                                 </a>
                                 </li>
                                 <li>
                                   <a href=" javascript:;"
-                                style="background: url('${baseUrl}/src/img/${pClassify[1].src}')center no-repeat;">
+                                style="background: url('${baseUrl}/src/img/${pClassify[1].src}')center no-repeat;"
+                                data-img="${baseUrl}/src/img/${pClassify[1].src}">
                                 <span>${pClassify[1].des}</span>
                                 </a>
                                 </li>
                                 <li>
                                   <a href=" javascript:;"
-                                style="background: url('${baseUrl}/src/img/${pClassify[2].src}')center no-repeat;">
+                                style="background: url('${baseUrl}/src/img/${pClassify[2].src}')center no-repeat;"
+                                data-img="${baseUrl}/src/img/${pClassify[2].src}">
                                 <span>${pClassify[2].des}</span>
                                 </a>
                                 </li>
                                 <li>
                                   <a href=" javascript:;"
-                                style="background: url('${baseUrl}/src/img/${pClassify[3].src}')center no-repeat;">
+                                style="background: url('${baseUrl}/src/img/${pClassify[3].src}')center no-repeat;"
+                                data-img="${baseUrl}/src/img/${pClassify[3].src}">
                                 <span>${pClassify[3].des}</span>
                                 </a>
                                 </li>
                                 <li>
                                   <a href=" javascript:;"
-                                style="background: url('${baseUrl}/src/img/${pClassify[4].src}')center no-repeat;">
+                                style="background: url('${baseUrl}/src/img/${pClassify[4].src}')center no-repeat;"
+                                data-img="${baseUrl}/src/img/${pClassify[4].src}">
                                 <span>${pClassify[4].des}</span>
                                 </a>
                                 </li>
@@ -185,7 +189,7 @@ define(['jquery', 'index'], function ($, index) {
                             <dd>
                               <span class="tb-stock">
                                 <a href="javascript:;" class="tb-reduce J_Reduce tb-disable-reduce">-</a>
-                                <input type="text" value="1" maxlength="8" min="1">
+                                <input type="text" value="1" maxlength="8" min="1" max="${res.pro_nums}">
                                 <a href="javascript:;" class="tb-increase J_Increase">+</a>件
                               </span>
                               <em> (库存
@@ -198,24 +202,130 @@ define(['jquery', 'index'], function ($, index) {
                               <a href="javascript:;">立即购买</a>
                             </div>
                             <div class="tb-btn-add">
-                              <a href="javascript:;">加入购物车</a>
+                              <a href="${baseUrl}/src/html/cart.html">加入购物车</a>
                             </div>
                           </div>
                         </div>
                       </div>`
           $('.tb-wrap-newshop').append(temp2)
           $('title').html(res.pro_title)
+
+          callback && callback(res.pro_id)
         }
       });
     },
     leftTabs: function () {
       $('.tb-gallery').on('mouseenter', '.tb-thumb li', function () {
+        flag = true
         $(this).addClass('tb-selected').siblings().removeClass('tb-selected')
-        $('.tb-booth img').attr('src', $(this).find('img').attr('src'))
+        $('.tb-booth img,.tb-loupe img').attr('src', $(this).find('img').attr('src'))
       })
     },
     loupe: function () {
+      flag = true
+      $('.tb-gallery').on('mouseover', '.tb-booth', function () {
+        if (flag) {
+          $('.ks-imagezoom-lens').addClass('show')
+          $('.tb-loupe').addClass('show')
+          $(this).on('mousemove', function (e) {
 
+            let top = e.pageY - $(this).offset().top - $('.ks-imagezoom-lens').height() / 2
+            let left = e.pageX - $(this).offset().left - $('.ks-imagezoom-lens').width() / 2
+
+            let r = $('.bigImg').width() / $(this).width()
+
+            if (top <= 0) {
+              top = 0
+            } else if (top >= $(this).height() - $('.ks-imagezoom-lens').height()) {
+              top = $(this).height() - $('.ks-imagezoom-lens').height()
+            }
+
+            if (left <= 0) {
+              left = 0
+            } else if (left >= $(this).width() - $('.ks-imagezoom-lens').width()) {
+              left = $(this).width() - $('.ks-imagezoom-lens').width()
+            }
+
+            $('.ks-imagezoom-lens').css({
+              top: top,
+              left: left
+            })
+
+            $('.bigImg').css({
+              top: -top * r,
+              left: -left * r
+            })
+          })
+        }
+      })
+
+      $('.tb-gallery').on('mouseout', '.tb-booth', function () {
+        $('.ks-imagezoom-lens').removeClass('show')
+        $('.tb-loupe').removeClass('show')
+      })
+
+      $('.tb-wrap').on('click', '.tb-img li', function () {
+        $(this).toggleClass('tb-selected').siblings().removeClass('tb-selected')
+        $('.tb-booth img').attr('src', $(this).find('a').attr('data-img'))
+
+        flag = false
+      })
+    },
+    addReduce: function () {
+      // console.log($('.tb-increase'), $('.tb-reduce'))
+      $('.tb-wrap').on('click', '.tb-increase', function () {
+        $('.tb-stock input').val(Number($('.tb-stock input').val()) + 1)
+        if ($('.tb-stock input').val() > 1) {
+          $('.tb-reduce').css({
+            cursor: 'pointer',
+            color: 'black'
+          })
+        }
+        if ($('.tb-stock input').val() == $('.tb-count').html()) {
+          $(this).css({
+            cursor: 'not-allowed',
+            color: '#ccc'
+          })
+        }
+      })
+
+      $('.tb-wrap').on('click', '.tb-reduce', function () {
+        if ($('.tb-stock input').val() > 1) {
+          console.log()
+          $('.tb-stock input').val(Number($('.tb-stock input').val()) - 1)
+          if ($('.tb-stock input').val() == 1) {
+            $(this).css({
+              cursor: 'not-allowed',
+              color: '#ccc'
+            })
+          }
+        }
+      })
+    },
+    addItem: function (id, num) {
+      let shop = cookie.get('shop')
+
+      let product = {
+        id: id,
+        num: num
+      }
+
+      if (shop) {
+        shop = JSON.parse(shop)
+
+        if (shop.some(elm => elm.id == id)) {
+          shop.forEach(elm => {
+            elm.id == id ? (elm.num = num) : null
+          })
+        } else {
+          shop.push(product)
+        }
+      } else {
+        shop = []
+        shop.push(product)
+      }
+
+      cookie.set('shop', JSON.stringify(shop), 1)
     }
 
   }

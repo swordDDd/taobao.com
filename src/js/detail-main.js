@@ -7,8 +7,14 @@ require.config({
   }
 })
 
-require(['detail'], function (d) {
+require(['jquery', 'detail'], function ($, d) {
   d.load()
-  d.renderD()
+  d.renderD(function (id) {
+    $('.tb-btn-add a').on('click', function () {
+      d.addItem(id, $('.tb-stock input').val())
+    })
+  })
   d.leftTabs()
+  d.loupe()
+  d.addReduce()
 })

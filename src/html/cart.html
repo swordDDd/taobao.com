@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../style/index.css">
   <link rel="stylesheet" href="../style/cart.css">
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1904039_b0hg520d0x.css">
+  <script src="../js/require.js" data-main="../js/cart-main"></script>
 </head>
 
 <body>
@@ -29,7 +30,26 @@
                 </span>
               </div>
             </div>
-            <div class="site-nav-menu-bd" id="siteNavLoginPanel"></div>
+            <div class="site-nav-menu-bd" id="siteNavLoginPanel">
+              <div class="site-nav-menu-bd-panel">
+                <div class="site-nav-user-wrapper ">
+                  <a href="javascript:;" class="site-nav-user-avatar">
+                    <img src="../img/head.jpg" alt="">
+
+                  </a>
+                </div>
+                <div class="site-nav-user-info">
+                  <p class="site-nav-user-operate">
+                    <a href="javascript:;">账号管理</a>
+                    <span class="site-nav-pipe">|</span>
+                    <a href="javascript:;" id="U_Exit">退出</a>
+                  </p>
+                  <p class="level-info tao-score">淘气值：541</p>
+                  <p class="level-info">普通会员</p>
+                </div>
+                <a href="javascript:;" class="site-nav-user-privilege">查看你的专属权益</a>
+              </div>
+            </div>
           </li>
           <li class="site-nav-menu site-nav-mobile" id="siteNavMobile">
             <div class="site-nav-menu-hd">
@@ -378,7 +398,6 @@
                   <div class="select-all">
                     <div class="cart-checkbox">
                       <input id="J_SelectAllCbx1" type="checkbox" name="select-all" value="true">
-                      <label for="J_SelectAllCbx1"></label>
                     </div>
                     &nbsp;&nbsp;全选
                   </div>
@@ -404,11 +423,51 @@
                 </div>
               </div>
             </div>
-            <div class="order-content">
-              <div class="item-body clearfix last-item">
-                <ul class="item-content clearfix">
-                  <li class="td td-chk"></li>
-                </ul>
+            <div class="clearfix order-body">
+              <div class="order-content">
+                <div class="item-body clearfix last-item">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="float-bar-holder">
+            <div class="float-bar clearfix default">
+              <div class="float-bar-wrapper">
+                <div class="select-all J_SelectAll">
+                  <div class="cart-checkbox">
+                    <input type="checkbox" class="J_CheckBoxShop" id="J_SelectAllCbx2" name="select-all">
+                  </div>
+                  &nbsp;全选
+                </div>
+                <div class="operations">
+                  <a href="javascript:;" class="J_DeleteSelected">删除</a>
+                  <a href="javascript:;">移入收藏夹</a>
+                  <a href="javascript:;">分享</a>
+                </div>
+                <div class="float-bar-right">
+                  <div id="J_ShowSelectedItems" class="amount-sum">
+                    <span class="txt">已选商品</span>
+                    <em id="J_SelectedItemsCount">0</em>
+                    <span class="txt">件</span>
+                  </div>
+                  <div class="pipe"></div>
+                  <div class="price-sum">
+                    <span class="txt">合计（不含运费）：</span>
+                    <strong class="price">
+                      <em id="J_Total">
+                        <span class="total-symbol">&nbsp;￥</span>
+                        0.00
+                      </em>
+                    </strong>
+                  </div>
+                  <div class="btn-area">
+                    <a href="javascript:;" class="submit-btn submit-btn-disabled">
+                      <span>结 算</span>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

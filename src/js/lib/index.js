@@ -3,23 +3,30 @@ let baseUrl = 'http://localhost/apache/taobao.com'
 define(['jquery', 'cookie'], function ($, cookie) {
   return {
     isLogin: function () {
-      let lS = JSON.parse(cookie.get('loginInfo'))
-      if (lS.loginStatus) {
-        $('.site-nav-sign').css('display', 'none')
-        $('.site-nav-user').css('display', 'block')
-        $('.site-nav-login-info-nick').html(`${lS.username}`)
-        $('.J_MemberNick').html(`${lS.username}`)
+      if (cookie.get('loginInfo')) {
+        let lS = JSON.parse(cookie.get('loginInfo'))
+        if (lS.loginStatus) {
+          $('.site-nav-sign').css('display', 'none')
+          $('.site-nav-user').css('display', 'block')
+          $('.site-nav-login-info-nick').html(`${lS.username}`)
+          $('.J_MemberNick').html(`${lS.username}`)
 
-        $('.site-nav-login').hover(function () {
-          $(this).addClass('site-nav-menu-hover')
-          $($(this).children()[1]).css('display', 'block')
-        }, function () {
-          $(this).removeClass('site-nav-menu-hover')
-          $($(this).children()[1]).css('display', 'none')
-        })
+          $('.site-nav-login').hover(function () {
+            $(this).addClass('site-nav-menu-hover')
+            $($(this).children()[1]).css('display', 'block')
+          }, function () {
+            $(this).removeClass('site-nav-menu-hover')
+            $($(this).children()[1]).css('display', 'none')
+          })
 
-        $('.member-logout').css('display', 'none')
-        $('.member-login').css('display', 'block')
+          $('.member-logout').css('display', 'none')
+          $('.member-login').css('display', 'block')
+
+          $('#U_Exit').on('click', function () {
+            cookie.remove('loginInfo')
+            location.reload()
+          })
+        }
       }
     },
     loadingHover: function () {
@@ -87,7 +94,6 @@ define(['jquery', 'cookie'], function ($, cookie) {
           res.forEach(elm => {
 
             let imgSrc = JSON.parse(elm.pro_img)[0].src
-            console.log(imgSrc)
             temp += `<div class="item">
             <a href="${baseUrl}/src/html/detail.html?id=${elm.pro_id}" class="hotsale-item">
               <div class="img-wrapper">
