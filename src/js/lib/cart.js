@@ -1,3 +1,4 @@
+let sum = 0
 define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
   if (cookie.get('loginInfo')) {
     return {
@@ -74,16 +75,16 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
                       <div class="td-inner">
                         <div class="amount-wrapper">
                           <div class="item-amount">
-                            <a href="#" class="J_Minus no-minus">-</a>
+                            <a href="javascript:;" class="J_Minus no-minus">-</a>
                             <input type="text" class="text text-amount" min="1" value="${arr[0].num}" max="${elm.pro_nums}">
-                            <a href="#" class="J_Plus plus">+</a>
+                            <a href="javascript:;" class="J_Plus plus">+</a>
                           </div>
                         </div>
                       </div>
                     </li>
                     <li class="td td-sum">
                       <div class="td-inner">
-                        <em class="number" tabindex="0">￥${arr[0].num*elm.pro_tPrice}</em>
+                        <em class="number" tabindex="0">￥${(arr[0].num*elm.pro_tPrice).toFixed(2)}</em>
                       </div>
                     </li>
                     <li class="td td-op">
@@ -99,22 +100,15 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
             },
             complete: function () {
               $('input[name=select-all]').on('click', function () {
-                if ($(this).is(':checked') == true) {
-                  $('input[name=select-all]').each(function () {
-                    $(this).attr('checked', true)
-                  })
-                  console.log($('input[name=select-all]'))
-                  $('.J_CheckBoxItem').each(function () {
-                    $(this).attr('checked', true)
-                  })
+                $('.J_CheckBoxItem,input[name=select-all]').prop('checked', $(this).prop('checked'))
+              })
+
+              // console.log($('.text-amount').val())
+              $('.text-amount').each(function () {
+                if ($(this).val() > 1) {
+                  $(this).siblings().eq(0).removeClass('no-minus').addClass('minus')
                 } else {
-                  $('input[name=select-all]').each(function () {
-                    $(this).attr('checked', false)
-                  })
-                  $('.J_CheckBoxItem').each(function () {
-                    $(this).attr('checked', false)
-                  })
-                  // console.log($('input[name=select-all]'))
+                  $(this).siblings().eq(0).removeClass('minus').addClass('no-minus')
                 }
               })
             }
@@ -123,18 +117,91 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
       },
       cartOp: function () {
         $('.item-body').on('click', '.J_CheckBoxItem', function () {
-          // console.log($('.J_CheckBoxItem').length)
-          if ($(this).is(':checked') == true) {} else {}
-
           if ($('.J_CheckBoxItem:checked').length === $('.J_CheckBoxItem').length) {
-            $('input[name=select-all]').attr('checked', true)
+            $('input[name=select-all]').each(function () {
+              $(this).prop('checked', true)
+            })
           } else {
-            $('input[name=select-all]').attr('checked', false)
+            $('input[name=select-all]').each(function () {
+              $(this).prop('checked', false)
+            })
+          }
+
+          if ($(this).prop('checked')) {
+            $('#J_SelectedItemsCount').html(Number($('#J_SelectedItemsCount').html()) + 1)
+            $('.submit-btn').removeClass('submit-btn-disabled')
+
+            sum += Number($(this).parents().filter('.item-content').find('.td-sum').find('em').html().slice(1))
+            $('#J_Total')[0].innerText = ` ￥ ${sum.toFixed(2)}`
+          } else {
+            if ($('.J_CheckBoxItem:checked').length == 0) {
+              $('.submit-btn').addClass('submit-btn-disabled')
+            }
+            $('#J_SelectedItemsCount').html(Number($('#J_SelectedItemsCount').html()) - 1)
+
+            sum -= Number($(this).parents().filter('.item-content').find('.td-sum').find('em').html().slice(1))
+            $('#J_Total')[0].innerText = ` ￥ ${sum.toFixed(2)}`
+          }
+        })
+      },
+      rAndA: function () {
+        $('.item-body').on('click', '.J_Minus', function () {
+          if ($(this).siblings().eq(0).val() > 1) {
+            $(this).siblings().eq(0).val(Number($(this).siblings().eq(0).val()) - 1)
+            $(this).parents().filter('.item-content').find('.td-sum').find('em')
+              .html(`￥${($(this).siblings().eq(0).val() * $(this).parents().filter('.item-content').find('.price-now')
+                .html().slice(1)).toFixed(2)}`)
+
+            if ($(this).parents().filter('.item-content').find('.J_CheckBoxItem').prop('checked')) {
+              sum -= Number($(this).parents().filter('.item-content').find('.price-now')
+                .html().slice(1))
+              $('#J_Total')[0].innerText = ` ￥ ${sum.toFixed(2)}`
+            }
+
+            if ($(this).siblings().eq(0).val() == 1) {
+              $(this).removeClass('minus').addClass('no-minus')
+            }
           }
         })
 
+        $('.item-body').on('click', '.J_Plus', function () {
+          if (Number($(this).siblings().eq(1).val()) < Number($(this).siblings().eq(1).attr('max'))) {
 
+            $(this).siblings().eq(1).val(Number($(this).siblings().eq(1).val()) + 1)
+
+            $(this).parents().filter('.item-content').find('.td-sum').find('em')
+              .html(`￥${($(this).siblings().eq(1).val() * $(this).parents().filter('.item-content').find('.price-now')
+                .html().slice(1)).toFixed(2)}`)
+
+            if ($(this).parents().filter('.item-content').find('.J_CheckBoxItem').prop('checked')) {
+              sum += Number($(this).parents().filter('.item-content').find('.price-now')
+                .html().slice(1))
+              $('#J_Total')[0].innerText = ` ￥ ${sum.toFixed(2)}`
+            }
+          }
+
+          if ($(this).prev().val() > 1) {
+            $(this).prev().prev().removeClass('no-minus').addClass('minus')
+          } else if ($(this).prev().val() == 1) {
+            $(this).prev().prev().removeClass('minus').addClass('no-minus')
+          }
+        })
+
+        $('.item-body').on('input', '.text-amount', function () {
+          if ($(this).val() != '' && Number($(this).val()) < Number($(this).attr('max'))) {
+            console.log()
+            $(this).parents().filter('.item-content').find('.td-sum').find('em').html(`￥${($(this).val()*$(this).parents().filter('.item-content').find('.price-now')
+            .html().slice(1)).toFixed(2)}`)
+
+          }
+          if ($(this).val() > 1) {
+            $(this).prev().removeClass('no-minus').addClass('minus')
+          } else if ($(this).val() == 1) {
+            $(this).prev().removeClass('minus').addClass('no-minus')
+          }
+        })
       }
+
     }
   } else {
     location.href = `${baseUrl}/src/html/login.html`

@@ -11,4 +11,5 @@ require(['cart'], function (cart) {
   cart.load()
   cart.renderC()
   cart.cartOp()
+  cart.rAndA()
 })

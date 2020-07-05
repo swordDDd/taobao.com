@@ -412,6 +412,9 @@ a {
 .total-symbol {
   font-weight: 400;
 }
+.float-bar .submit-btn:hover {
+  background: #f22d00;
+}
 .float-bar .combine-not-supported:link,
 .float-bar .combine-not-supported:hover,
 .float-bar .submit-btn-disabled:link,
@@ -451,4 +454,10 @@ a {
 .item-content .item-pic a img {
   max-width: 80px;
   max-height: 80px;
+}
+.item-content .item-amount .minus:hover,
+.item-content .item-amount .plus:hover {
+  color: #f50;
+  z-index: 3;
+  border-color: #f60;
 }
