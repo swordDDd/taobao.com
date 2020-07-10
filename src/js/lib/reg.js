@@ -13,7 +13,6 @@ define(['jquery', 'shake'], function ($, s) {
             $('.reg-error-msg').html('用户名格式不正确')
             $('.fm-button').attr('disabled', true)
           } else {
-            $('#reg-error').css('display', 'none')
             $('.fm-button').attr('disabled', false)
           }
         }, 500)

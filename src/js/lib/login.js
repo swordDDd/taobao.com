@@ -4,6 +4,7 @@ define(['jquery', 'cookie'], function ($, cookie) {
   return {
     check: function () {
       $('.fm-button').on('click', function () {
+        let info = JSON.parse(cookie.get('loginInfo'))
         $.ajax({
           type: "post",
           url: `${baseUrl}/interface/login-check.php`,
@@ -22,10 +23,17 @@ define(['jquery', 'cookie'], function ($, cookie) {
                 username: res.user_name
               }
               cookie.set('loginInfo', JSON.stringify(loginInfo), 1)
-              location.href = `./index.html`
+              if ($('#fm-login-id').val() == info.username) {
+                alert('当前用户名已登录')
+                location.reload()
+              } else {
+                location.href = `./index.html`
+              }
+
             }
           }
         });
+
       })
     }
   }

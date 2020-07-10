@@ -4,7 +4,9 @@ define(['jquery', 'cookie'], function ($, cookie) {
   return {
     isLogin: function () {
       if (cookie.get('loginInfo')) {
-        let lS = JSON.parse(cookie.get('loginInfo'))
+        let lS = JSON.parse(cookie.get('loginInfo')),
+          proInfo = JSON.parse(cookie.get('shop'))
+
         if (lS.loginStatus) {
           $('.site-nav-sign').css('display', 'none')
           $('.site-nav-user').css('display', 'block')
@@ -26,6 +28,11 @@ define(['jquery', 'cookie'], function ($, cookie) {
             cookie.remove('loginInfo')
             location.reload()
           })
+
+          if (proInfo.length) {
+            $('#miniCartNum').html(proInfo.length)
+            $('.mini-cart-ft p').html(`您的购物车里有${proInfo.length}件商品`)
+          }
         }
       }
     },
@@ -133,6 +140,5 @@ define(['jquery', 'cookie'], function ($, cookie) {
     }
 
   }
-
 
 })

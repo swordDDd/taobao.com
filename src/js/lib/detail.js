@@ -301,6 +301,12 @@ define(['jquery', 'index', 'cookie'], function ($, index, cookie) {
           }
         }
       })
+
+      $('.tb-wrap').on('input', '.tb-stock input', function () {
+        if (!Number($(this).val())) {
+          $(this).val(1)
+        }
+      })
     },
     addItem: function (id, num) {
       let shop = cookie.get('shop')
@@ -327,6 +333,5 @@ define(['jquery', 'index', 'cookie'], function ($, index, cookie) {
 
       cookie.set('shop', JSON.stringify(shop), 1)
     }
-
   }
 })

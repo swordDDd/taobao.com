@@ -138,7 +138,6 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
                   let temp = []
                   let t = {}
 
-
                   $('.J_CheckBoxItem:checked').each(function () {
                     selectedArr.push($(this).parents().filter('.item-content').attr('data-index'))
                   })
@@ -147,15 +146,14 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
                     for (let v of selectedArr) {
                       if (elm.id == v) {
                         temp.push(index)
-
                       }
                     }
                   })
 
-                  t.length = shop.length
+                  t.i = shop.length
 
                   for (let i in temp) {
-                    if (t.length == shop.length) {
+                    if (t.i == shop.length) {
                       shop.splice(i, 1)
                     } else {
                       i--
@@ -163,11 +161,12 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
                     }
                   }
 
-
-
                   cookie.set('shop', JSON.stringify(shop), 1)
 
-                  location.reload()
+                  $('.item-content').each(function () {
+                    $(this).remove()
+                  })
+                  // location.reload()
                 }
               })
             }
@@ -185,7 +184,6 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
               $(this).prop('checked', false)
             })
           }
-
           if ($(this).prop('checked')) {
             $('#J_SelectedItemsCount').html(Number($('#J_SelectedItemsCount').html()) + 1)
             $('.submit-btn').removeClass('submit-btn-disabled')
@@ -204,6 +202,7 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
         })
       },
       rAndA: function () {
+        let shop = JSON.parse(cookie.get('shop'))
         $('.item-body').on('click', '.J_Minus', function () {
           if ($(this).siblings().eq(0).val() > 1) {
             $(this).siblings().eq(0).val(Number($(this).siblings().eq(0).val()) - 1)
@@ -220,6 +219,14 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
             if ($(this).siblings().eq(0).val() == 1) {
               $(this).removeClass('minus').addClass('no-minus')
             }
+
+            shop.forEach(elm => {
+              if (elm.id == $(this).parents().filter('.item-content').attr('data-index')) {
+                elm.num = $(this).siblings().eq(0).val()
+              }
+            })
+            cookie.set('shop', JSON.stringify(shop), 1)
+
           }
         })
 
@@ -244,11 +251,21 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
           } else if ($(this).prev().val() == 1) {
             $(this).prev().prev().removeClass('minus').addClass('no-minus')
           }
+
+          shop.forEach(elm => {
+            if (elm.id == $(this).parents().filter('.item-content').attr('data-index')) {
+              elm.num = $(this).siblings().eq(1).val()
+            }
+          })
+          cookie.set('shop', JSON.stringify(shop), 1)
+
         })
 
         $('.item-body').on('input', '.text-amount', function () {
+          if (!Number($(this).val())) {
+            $(this).val(1)
+          }
           if ($(this).val() != '' && Number($(this).val()) < Number($(this).attr('max'))) {
-            console.log()
             $(this).parents().filter('.item-content').find('.td-sum').find('em').html(`￥${($(this).val()*$(this).parents().filter('.item-content').find('.price-now')
             .html().slice(1)).toFixed(2)}`)
 
@@ -258,13 +275,19 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
           } else if ($(this).val() == 1) {
             $(this).prev().removeClass('minus').addClass('no-minus')
           }
+
+          shop.forEach(elm => {
+            if (elm.id == $(this).parents().filter('.item-content').attr('data-index')) {
+              elm.num = $(this).val()
+            }
+          })
+          cookie.set('shop', JSON.stringify(shop), 1)
         })
       },
       delete: function () {
 
         $('.item-body').on('click', '.J_Del', function () {
           let shop = JSON.parse(cookie.get('shop'))
-          // console.log(shop)
           let temp = {}
 
           shop.forEach((elm, index) => {
@@ -276,12 +299,10 @@ define(['jquery', 'cookie', 'index'], function ($, cookie, index) {
           shop.splice(temp.i, 1)
 
           cookie.set('shop', JSON.stringify(shop), 1)
-          location.reload()
-
+          $(this).parents().filter('.item-content').remove()
 
         })
       }
-
     }
   } else {
     location.href = `${baseUrl}/src/html/login.html`
